@@ -29,6 +29,12 @@ if (is_numeric(@$_REQUEST['nights'])) {
 if (is_numeric(@$_REQUEST['price'])) {
     $view_object->set_price($_REQUEST['price']);
 }
+if (isset($_REQUEST['top_text'])) {
+    $view_object->set_top_text(addslashes($_REQUEST['top_text']));
+}
+if (isset($_REQUEST['bottom_text'])) {
+    $view_object->set_bottom_text(addslashes($_REQUEST['bottom_text']));
+}
 
 
 //$contents = file_get_contents("templates/sample.mustache");

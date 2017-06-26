@@ -8,28 +8,58 @@
 class View_object extends stdClass
 {
     public $target = [
-        'x' => 65,
+        'x' => 62,
         'y' => 90,
         'text' => "zum Angebot",
     ];
     public $top = [
-        'x' => 68,
+        'x' => 62,
         'y' => 19,
         'text' => "nur",
     ];
+    public $price = [
+        'x' => 90,
+        'y' => 63,
+    ];
+
+
     public $top_unit = " Ü/F ";
     public $top_nights = "5";
-    public $price = "189";
+    public $price_value = "189";
 
     public function set_nights($nights) {
         $this->top_nights = $nights;
     }
 
-    public function set_price($price) {
-        $this->price = $price;
+    public function set_price($price_value) {
+        if ($price_value < 100) {
+            $this->price['x'] = 80;
+        }
+        if ($price_value > 999) {
+            $this->price['x'] = 100;
+        }
+        $this->price_value = $price_value;
+    }
+
+    public function set_top_text($top_text) {
+        $this->top_text = $top_text;
+    }
+
+    public function set_bottom_text($bottom_text) {
+        $this->bottom_text = $bottom_text;
     }
 
     public function top_label() {
-        return $this->top_nights . $this->top_unit . $this->top['text'];
+        if (empty($this->top_text))
+            return $this->top_nights . $this->top_unit . $this->top['text'];
+        else
+            return $this->top_text;
+    }
+
+    public function bottom_label() {
+        if (empty($this->bottom_text))
+            return $this->target['text'];
+        else
+            return $this->bottom_text;
     }
 }
