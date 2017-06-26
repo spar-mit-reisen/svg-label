@@ -42,12 +42,12 @@ class View_object extends stdClass
     }
 
     public function set_top_text($top_text) {
-        $top_text = str_replace(['_'], [' ']);
+        $top_text = str_replace(['_'], [' '], $top_text);
         $this->top_text = $top_text;
     }
 
     public function set_bottom_text($bottom_text) {
-        $bottom_text = str_replace(['_'], [' ']);
+        $bottom_text = str_replace(['_'], [' '], $bottom_text);
         $this->bottom_text = $bottom_text;
     }
 
