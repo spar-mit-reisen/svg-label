@@ -24,8 +24,8 @@ class View_object extends stdClass
 
 
     public $top_unit = " Ü/F ";
-    public $top_nights = "5";
-    public $price_value = "189";
+    public $top_nights = "1";
+    public $price_value = "289";
 
     public function set_nights($nights) {
         $this->top_nights = $nights;
@@ -42,10 +42,12 @@ class View_object extends stdClass
     }
 
     public function set_top_text($top_text) {
+        $top_text = str_replace(['_'], [' ']);
         $this->top_text = $top_text;
     }
 
     public function set_bottom_text($bottom_text) {
+        $bottom_text = str_replace(['_'], [' ']);
         $this->bottom_text = $bottom_text;
     }
 
