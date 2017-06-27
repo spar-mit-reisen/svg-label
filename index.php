@@ -37,16 +37,63 @@ if (isset($_REQUEST['bottom_text'])) {
 }
 
 
+if (isset($_REQUEST['test'])) {
+    $test = addslashes($_REQUEST['test']);
+}
+
 //$contents = file_get_contents("templates/sample.mustache");
 
+if (@$test == 1) {
 # for svg including js - leads to download modal in firefox
-//header('Content-Type: application/svg+xml');
+    header('Content-Type: application/svg+xml');
+} else {
 # for svg without js - direct call shows 'image'
-header('Content-Type: image/svg+xml');
+    header('Content-Type: image/svg+xml');
+}
 $days = 0;
 $expires = 60 * 60 * 24 * $days;
 header("Pragma: public");
 header("Cache-Control: maxage=" . $expires);
 header('Expires: ' . gmdate('D, d M Y H:i:s', time() + $expires) . ' GMT');
 //echo $contents;
-echo $m->_render($contents, $view_object);
+$svg = $m->_render($contents, $view_object);
+
+
+$request_uri_src = $_SERVER['REQUEST_URI'];
+$request_uri = explode("/", $request_uri_src);
+//var_dump($_SERVER);die;
+if (end($request_uri) == "demo.html") {
+    header('Content-Type: text/html');
+//    $url = "//" . $_SERVER['SERVER_NAME'] . "" . str_replace("/file.html", "/file.svg", $_SERVER['REQUEST_URI']);
+    $url = "//" . $_SERVER['SERVER_NAME'] . "" . str_replace("/demo.html", "", $_SERVER['REQUEST_URI']);
+    $html = 'img:<br><img src="%s" onerror="this.src=logo-fallback.png;this.onerror=null;" /><br>';
+    echo sprintf($html, $url);
+    #
+    $html = 'picture:<br><picture>
+    <source type="image/svg+xml" srcset="%s">
+    <!--<img src="%s" alt="Image description">-->
+</picture><br>';
+    echo sprintf($html, $url, $url);
+    #
+    $html = 'object:<br><object data="%s" type="image/svg+xml">
+    <!-- fallback here -->
+    fail3
+</object><br>';
+    echo sprintf($html, $url);
+    #
+    $html = 'iframe:<br><iframe border="0" src="%s">
+    <!-- fallback here -->
+    fail4
+</iframe><br>';
+    echo sprintf($html, $url);
+    #
+} elseif (end($request_uri) == "file.png") {
+    $im = new Imagick();
+//    $svg = file_get_contents("templates/sample.mustache");
+    $im->readImageBlob($svg);
+    $im->setImageFormat('png24');
+    header('Content-Type: image/png24');
+    echo $im;
+} else {
+    echo $svg;
+}
