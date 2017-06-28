@@ -17,8 +17,14 @@ require __DIR__."/libs/mustache.php/vendor/autoload.php";
 require __DIR__."/Mustache_lib.php";
 require __DIR__."/View_object.php";
 
+$request_uri_src = $_SERVER['REQUEST_URI'];
+$request_uri = explode("/", $request_uri_src);
+
 $m = new Mustache_lib();
-$contents = $m->_load_template("sample.mustache");
+if (end($request_uri) == "file2.svg")
+    $contents = $m->_load_template("full_vektor2.mustache");
+else
+    $contents = $m->_load_template("sample.mustache");
 
 $view_object = new View_object();
 
@@ -59,8 +65,7 @@ header('Expires: ' . gmdate('D, d M Y H:i:s', time() + $expires) . ' GMT');
 $svg = $m->_render($contents, $view_object);
 
 
-$request_uri_src = $_SERVER['REQUEST_URI'];
-$request_uri = explode("/", $request_uri_src);
+
 //var_dump($_SERVER);die;
 if (end($request_uri) == "demo.html") {
     header('Content-Type: text/html');
@@ -68,6 +73,10 @@ if (end($request_uri) == "demo.html") {
     $url = "//" . $_SERVER['SERVER_NAME'] . "" . str_replace("/demo.html", "", $_SERVER['REQUEST_URI']);
     $html = 'img:<br><img src="%s" onerror="this.src=logo-fallback.png;this.onerror=null;" /><br>';
     echo sprintf($html, $url);
+    #
+    $url2 = "//" . $_SERVER['SERVER_NAME'] . "" . str_replace("/demo.html", "/file2.svg", $_SERVER['REQUEST_URI']);
+    $html = '<img src="%s" onerror="this.src=logo-fallback.png;this.onerror=null;" /><br>';
+    echo sprintf($html, $url2);
     #
     $html = 'picture:<br><picture>
     <source type="image/svg+xml" srcset="%s">
@@ -89,11 +98,13 @@ if (end($request_uri) == "demo.html") {
     #
 } elseif (end($request_uri) == "file.png") {
     $im = new Imagick();
-//    $svg = file_get_contents("templates/sample.mustache");
+    $svg = file_get_contents("templates/sample.mustache");
     $im->readImageBlob($svg);
     $im->setImageFormat('png24');
-    header('Content-Type: image/png24');
+    header('Content-Type: image/png');
     echo $im;
+} elseif (end($request_uri) == "file2.svg") {
+    echo $svg;
 } else {
     echo $svg;
 }
