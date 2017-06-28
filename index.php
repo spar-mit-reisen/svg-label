@@ -53,7 +53,7 @@ if (isset($_REQUEST['test'])) {
 if (@$test == 1) {
 # for svg including js - leads to download modal in firefox
     header('Content-Type: application/svg+xml');
-if (@$test == 2) {
+} if (@$test == 2) {
     var_dump($_SERVER);die;
 } else {
 # for svg without js - direct call shows 'image'
