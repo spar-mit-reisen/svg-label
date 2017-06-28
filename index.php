@@ -18,8 +18,13 @@ require __DIR__."/Mustache_lib.php";
 require __DIR__."/View_object.php";
 
 $request_uri_src = $_SERVER['REQUEST_URI'];
-$request_uri = explode("/", $request_uri_src);
-$requested_file = @explode("?", end($request_uri))[0];
+if (count(explode("?", $request_uri_src)) > 1) {
+    list($request_uri, $request_params_string) = explode("?", $request_uri_src);
+} else {
+    $request_uri = $request_uri_src;
+}
+$request_uri_segments = explode("/", $request_uri);
+$requested_file = end($request_uri_segments);
 
 $m = new Mustache_lib();
 if ($requested_file == "file2.svg")
