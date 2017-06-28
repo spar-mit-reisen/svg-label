@@ -19,9 +19,10 @@ require __DIR__."/View_object.php";
 
 $request_uri_src = $_SERVER['REQUEST_URI'];
 $request_uri = explode("/", $request_uri_src);
+$requested_file = @explode("?", end($request_uri))[0];
 
 $m = new Mustache_lib();
-if (end($request_uri) == "file2.svg")
+if ($requested_file == "file2.svg")
     $contents = $m->_load_template("full_vektor2.mustache");
 else
     $contents = $m->_load_template("sample.mustache");
@@ -67,7 +68,7 @@ $svg = $m->_render($contents, $view_object);
 
 
 //var_dump($_SERVER);die;
-if (end($request_uri) == "demo.html") {
+if ($requested_file == "demo.html") {
     header('Content-Type: text/html');
 //    $url = "//" . $_SERVER['SERVER_NAME'] . "" . str_replace("/file.html", "/file.svg", $_SERVER['REQUEST_URI']);
     $url = "//" . $_SERVER['SERVER_NAME'] . "" . str_replace("/demo.html", "", $_SERVER['REQUEST_URI']);
@@ -96,14 +97,14 @@ if (end($request_uri) == "demo.html") {
 </iframe><br>';
     echo sprintf($html, $url);
     #
-} elseif (end($request_uri) == "file.png") {
+} elseif ($requested_file == "file.png") {
     $im = new Imagick();
     $svg = file_get_contents("templates/sample.mustache");
     $im->readImageBlob($svg);
     $im->setImageFormat('png24');
     header('Content-Type: image/png');
     echo $im;
-} elseif (end($request_uri) == "file2.svg") {
+} elseif ($requested_file == "file2.svg") {
     echo $svg;
 } else {
     echo $svg;
