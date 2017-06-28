@@ -8,12 +8,12 @@
 class View_object extends stdClass
 {
     public $target = [
-        'x' => 60,
+        'x' => 61,
         'y' => 90,
         'text' => "zum Angebot",
     ];
     public $top = [
-        'x' => 60,
+        'x' => 61,
         'y' => 19,
         'text' => "nur",
     ];
