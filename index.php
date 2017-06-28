@@ -53,6 +53,8 @@ if (isset($_REQUEST['test'])) {
 if (@$test == 1) {
 # for svg including js - leads to download modal in firefox
     header('Content-Type: application/svg+xml');
+if (@$test == 2) {
+    var_dump($_SERVER);die;
 } else {
 # for svg without js - direct call shows 'image'
     header('Content-Type: image/svg+xml');
@@ -66,8 +68,6 @@ header('Expires: ' . gmdate('D, d M Y H:i:s', time() + $expires) . ' GMT');
 $svg = $m->_render($contents, $view_object);
 
 
-
-//var_dump($_SERVER);die;
 if ($requested_file == "demo.html") {
     header('Content-Type: text/html');
 //    $url = "//" . $_SERVER['SERVER_NAME'] . "" . str_replace("/file.html", "/file.svg", $_SERVER['REQUEST_URI']);
