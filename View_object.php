@@ -14,7 +14,7 @@ class View_object extends stdClass
     ];
     public $top = [
         'x' => 55,
-        'y' => 13,
+        'y' => 14,
         'text' => "nur",
     ];
     public $price = [
