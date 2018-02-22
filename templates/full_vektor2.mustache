@@ -3,8 +3,8 @@
      xmlns:xlink="http://www.w3.org/1999/xlink" width="122" height="100" viewBox="0 0 122 100">
     <!--<link href="//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css">-->
     <defs>
-        <!--<style type="text/css">@import url("//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic");</style>-->
-        <style type="text/css">@import url("//fonts.googleapis.com/css?family=Asap");</style>
+        <style type="text/css">@import url("//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic");</style>
+        <!--<style type="text/css">@import url("//fonts.googleapis.com/css?family=Asap");</style>-->
         <style>
             /*@font-face {*/
             /*font-family: "Asap";*/
@@ -12,8 +12,18 @@
             /*}*/
             .price .value, .top, .currency, .target {
                 font-family: 'Asap', sans-serif;
+                moz-osx-font-smoothing: grayscale!important;
+                -webkit-font-smoothing: antialiased;
+                -moz-font-smoothing: antialiased;
+                font-smoothing: antialiased;
+                font-smooth: always;
+            }
+
+            .value, .currency, .target, .top {
                 font-weight: 700;
             }
+
+
 
             .top, .target {
                 font-size: 12px;
@@ -40,6 +50,7 @@
                 /*filter: url(#filter);*/
                 /*text-anchor: right;*/
                 text-anchor: end;
+                font-weight: 700;
             }
 
             .price .currency {
