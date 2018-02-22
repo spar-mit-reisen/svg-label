@@ -8,18 +8,18 @@
 class View_object extends stdClass
 {
     public $target = [
-        'x' => 61,
-        'y' => 90,
+        'x' => 54,
+        'y' => 76,
         'text' => "zum Angebot",
     ];
     public $top = [
-        'x' => 61,
-        'y' => 19,
+        'x' => 55,
+        'y' => 13,
         'text' => "nur",
     ];
     public $price = [
-        'x' => 90,
-        'y' => 63,
+        'x' => 84,
+        'y' => 55,
     ];
 
 
@@ -33,10 +33,10 @@ class View_object extends stdClass
 
     public function set_price($price_value) {
         if ($price_value < 100) {
-            $this->price['x'] = 80;
+            $this->price['x'] = 71;
         }
         if ($price_value > 999) {
-            $this->price['x'] = 100;
+            $this->price['x'] = 83;
         }
         $this->price_value = $price_value;
     }
