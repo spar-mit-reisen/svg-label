@@ -9,17 +9,17 @@ class View_object extends stdClass
 {
     public $target = [
         'x' => 54,
-        'y' => 76,
+        'y' => 78,
         'text' => "zum Angebot",
     ];
     public $top = [
         'x' => 55,
-        'y' => 14,
+        'y' => 16,
         'text' => "nur",
     ];
     public $price = [
         'x' => 84,
-        'y' => 55,
+        'y' => 58,
     ];
 
 

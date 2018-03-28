@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg id="Preislabel_1zeilig" data-name="Preislabel 1zeilig" xmlns="http://www.w3.org/2000/svg"
-     xmlns:xlink="http://www.w3.org/1999/xlink" width="104" height="78" viewBox="0 0 108 82">
+     xmlns:xlink="http://www.w3.org/1999/xlink" width="104" height="81" viewBox="0 0 108 82">
     <!--<link href="//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css">-->
     <defs>
         <style type="text/css">
@@ -50,11 +50,15 @@
                 font-smooth: always;
             }
 
-            .value, .currency, .target, .top {
-                font-family: Asap-Bold;
+            .value, .currency, .top {
+                font-family: 'Asap-Bold';
             }
 
-            .top, .target {
+            .target {
+                font-family: 'Asap', sans-serif;
+            }
+
+            .target {
                 font-size: 11px;
             }
 
@@ -63,6 +67,7 @@
             }
             .top {
                 fill: #c00d0e;
+                font-size: 13px;
             }
 
             .target, .top {
@@ -79,7 +84,7 @@
                 /*filter: url(#filter);*/
                 /*text-anchor: right;*/
                 text-anchor: end;
-                font-family: Asap-Bold;
+                font-family: 'Asap-Bold';
             }
 
             .price .currency {
@@ -88,18 +93,18 @@
             }
         </style>
     </defs>
-    <rect x="2" y="2" rx="4" ry="4" width="104" height="78"
+    <rect x="2" y="2" rx="4" ry="4" width="104" height="81"
           style="fill:rgba(0,0,0,0.5);stroke:black;stroke-width:2;opacity:0.1" />
     <rect x="4" y="2" rx="5" ry="5" width="100" height="14"
           style="fill:rgba(255,255,255,1);opacity:1" />
-    <rect x="4" y="7" rx="0" ry="0" width="100" height="11"
+    <rect x="4" y="10" rx="0" ry="0" width="100" height="12"
           style="fill:rgba(255,255,255,1);opacity:1" />
-    <rect x="4" y="17" rx="0" ry="0" width="100" height="45"
+    <rect x="4" y="20" rx="0" ry="0" width="100" height="45"
           style="fill:rgba(191,12,21,1);opacity:1" />
 
-    <rect x="4" y="66" rx="0" ry="0" width="100" height="8"
+    <rect x="4" y="68" rx="0" ry="0" width="100" height="8"
           style="fill:rgba(32,126,191,1);opacity:1" />
-    <rect x="4" y="66" rx="5" ry="5" width="100" height="14" style="fill:rgba(32,126,191,1);opacity:1"/>
+    <rect x="4" y="68" rx="5" ry="5" width="100" height="14" style="fill:rgba(32,126,191,1);opacity:1"/>
 
     <text id="target" data-name="target" class="target" transform="translate({{target.x}} {{target.y}})"><tspan x="" y="">{{ bottom_label }}</tspan></text>
     <text id="top" data-name="top" class="top" transform="translate({{top.x}} {{top.y}})"><tspan x="" y="">{{top_label }}</tspan></text>
