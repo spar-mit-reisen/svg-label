@@ -64,7 +64,7 @@ if (@$test == 1) {
 # for svg without js - direct call shows 'image'
     header('Content-Type: image/svg+xml');
 }
-$days = 0;
+$days = 3;
 $expires = 60 * 60 * 24 * $days;
 header("Pragma: public");
 header("Cache-Control: maxage=" . $expires);
